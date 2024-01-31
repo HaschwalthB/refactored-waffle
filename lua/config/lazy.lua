@@ -36,6 +36,8 @@ require("lazy").setup({
                     -- "matchit",
                     -- "matchparen",
                     -- "netrwPlugin",
+                    "nvim-notify",
+                    "noice",
                     "tarPlugin",
                     "tohtml",
                     "tutor",
