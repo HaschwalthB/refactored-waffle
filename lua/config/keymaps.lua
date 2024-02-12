@@ -4,9 +4,16 @@
 --  i wanna make some keympa, that gonna jump directly to the next errors
 
 --key.set("n", "gj", "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>")
-vim.keymap.set("n", "gj", vim.diagnostic.goto_next)
-vim.keymap.set("n", "gk", vim.diagnostic.goto_prev)
+local opts = { noremap = true, silent = true }
+local keymap = vim.keymap
 
+vim.api.nvim_set_keymap("n", "<C-f>", "", opts)
+keymap.set("n", "<C-m>", "8j", opts)
+keymap.set("n", "<C-i>", "8k", opts)
+keymap.set("n", "gj", vim.diagnostic.goto_next)
+keymap.set("n", "gk", vim.diagnostic.goto_prev)
+
+keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 Keys = {
      {
           "<leader>tt",
@@ -15,7 +22,9 @@ Keys = {
           end,
           desc = "Run File",
      },
+
      {
+
           "<leader>tT",
           function()
                require("neotest").run.run(vim.loop.cwd())
