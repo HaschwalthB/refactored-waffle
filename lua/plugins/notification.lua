@@ -4,7 +4,7 @@ return {
           event = "VeryLazy",
           notify = {
                opts = {
-                    enabled = true,
+                    enabled = false,
                },
           },
           dependencies = {
@@ -13,7 +13,7 @@ return {
      },
      {
           "rcarriga/nvim-notify",
-          enabled = true,
+          enabled = false,
           config = function()
                require("notify").setup({
                     leave_open = true,
@@ -29,6 +29,5 @@ return {
                     },
                })
           end,
-          -- { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
      },
 }
