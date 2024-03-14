@@ -1,72 +1,20 @@
--- copilot
--- nvim cmp
--- copilot
 return {
      {
-          "zbirenbaum/copilot.lua",
-          cmd = "Copilot",
-          build = ":Copilot auth",
-          opts = {
-               suggestion = { enabled = false },
-               panel = { enabled = false },
-               filetypes = {
-                    markdown = true,
-                    help = true,
-               },
-          },
-     },
-
-     --- nvim cmp
-     {
-          "nvim-cmp",
-          dependencies = {
-               {
-                    "zbirenbaum/copilot-cmp",
-                    dependencies = "copilot.lua",
-                    opts = {},
-                    config = function(_, opts)
-                         local copilot_cmp = require("copilot_cmp")
-                         copilot_cmp.setup(opts)
-                         -- attach cmp source whenever copilot attaches
-                         -- fixes lazy-loading issues with the copilot cmp source
-                         require("lazyvim.util").lsp.on_attach(function(client)
-                              if client.name == "copilot" then
-                                   copilot_cmp._on_insert_enter({})
-                              end
-                         end)
-                    end,
-               },
-          },
-          ---@param opts cmp.ConfigSchema
-          opts = function(_, opts)
-               table.insert(opts.sources, 1, {
-                    name = "copilot",
-                    group_index = 1,
-                    priority = 100,
-               })
+          "github/copilot.vim",
+          lazy = false,
+          config = function()
+               vim.g.copilot_no_tab_map = true
+               vim.g.copilot_assume_mapped = true
+               vim.g.copilot_tab_fallback = ""
           end,
      },
-
-     --- copilot cmp
      {
-          "zbirenbaum/copilot-cmp",
-          dependencies = "copilot.lua",
-          opts = {},
-          config = function(_, opts)
-               local copilot_cmp = require("copilot_cmp")
-               copilot_cmp.setup(opts)
-               -- attach cmp source whenever copilot attaches
-               -- fixes lazy-loading issues with the copilot cmp source
-               require("lazyvim.util").lsp.on_attach(function(client)
-                    if client.name == "copilot" then
-                         copilot_cmp._on_insert_enter({})
-                    end
-               end)
+          "L3MON4D3/LuaSnip",
+          keys = function()
+               return {}
           end,
      },
-
      -- copilot chat
-     --
      {
           "CopilotC-Nvim/CopilotChat.nvim",
           branch = "canary",

@@ -2,7 +2,7 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 --  i wanna make some keympa, that gonna jump directly to the next errors
-
+--   copilot keymaps
 --key.set("n", "gj", "<cmd>lua vim.lsp.diagnostic.goto_next()<cr>")
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap

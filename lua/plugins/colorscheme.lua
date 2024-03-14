@@ -154,9 +154,18 @@ return {
      },
 
      {
+          "tiagovla/tokyodark.nvim",
+          config = function()
+               require("tokyodark").setup({
+                    transparent_background = true,
+               }) -- calling setup is optional
+          end,
+     },
+
+     {
           "LazyVim/LazyVim",
           opts = {
-               colorscheme = "solarized-osaka",
+               colorscheme = "tokyodark",
           },
      },
 }

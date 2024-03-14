@@ -8,3 +8,4 @@ opt.shiftwidth = 5
 opt.smartindent = true
 opt.expandtab = true
 opt.softtabstop = 8
+opt.relativenumber = false
